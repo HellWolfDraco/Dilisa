@@ -1,0 +1,196 @@
+:root {
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --accent: #a020f0;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+.dark-theme {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Убираем горизонтальный скролл, если есть */
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: var(--transition);
+  line-height: 1.6;
+}
+
+.container {
+  min-height: 100vh; /* Занимает всю высоту экрана */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Контент начинается сверху */
+  align-items: center;
+  padding: 40px 20px 0; /* Верх: 40px, низ: 0 — меньше, чем было */
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+.hero {
+  text-align: center;
+  max-width: 600px;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  object-fit: cover;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--accent);
+}
+
+.highlight {
+  text-shadow: 0 0 8px rgba(160, 32, 240, 0.4);
+}
+
+p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+button#theme-toggle {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 20px auto;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(160, 32, 240, 0.3);
+}
+
+button#theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(160, 32, 240, 0.4);
+}
+
+.platforms {
+  width: 100%;
+  max-width: 800px;
+}
+
+.platforms h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.card {
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  padding: 24px 16px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 12px;
+  filter: brightness(1.2);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card span {
+  font-size: 1rem;
+}
+
+/* Тема: иконки под тему */
+footer {
+  margin-top: 20px; /* Уменьшили отступ сверху */
+  padding: 10px 0 20px; /* Меньше паддинга снизу */
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Лёгкая линия, если в тёмной теме */
+}
+
+.admin-link {
+  margin-left: 10px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.admin-link:hover {
+  text-decoration: underline;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.card.animate {
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: calc(0.1s * var(--delay));
+}
